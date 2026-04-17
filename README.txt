@@ -1,8 +1,7 @@
 # smooth_random_env
 Smoothed random action sampling for gymnasium-style RL environments
 
-Various algorithms in RL either make use of an occasional "explore" random action  
-or collect initial random episodes to bootstrap the training. 
+Various algorithms in RL either make use of an occasional "explore" random action or collect initial random episodes to bootstrap the training. 
 
 However, a general issue with random sampling - specialy for delta-time physics simulating environments - is that the  
 actions average over a median point within the action space. 
@@ -10,9 +9,7 @@ actions average over a median point within the action space.
 This makes the agent's "random" trajectory wiggling close to one applying the average over the action space.
 e.g. in CarRacing it would  incoherently slam random steering, throtle and brakes, resulting in a short, low reward trajectory or in MountainCar a random action doesn't move the cart too far before the episode ends.
 
-
 Files:
-
 
 smooth_random.py 
 ----------------
@@ -32,7 +29,6 @@ All above samplers return an action_pick function which can be used in play_epis
 the action_pick() returns a new action "closer" to the one from a previous call. 
 
 play_episode(env, action_pick) - play a new episode for the specified environment and action picker
-
 
 
 
@@ -60,11 +56,9 @@ Run 20 episodes of smoothed continous sample for MountainCarContinuous-v0...done
 Episode reward mean:65.04, maximum: 95.93, minimum:-31.21      
 # A lot better average and maximum reward episode
 
-
 Run 200 episodes of standard discrete random sample for MountainCar-v0...done in 1.251 seconds
 Episode reward mean:-200.00, maximum: -200.00, minimum:-200.00 
-# Discrete action very hard to solve randomly or to nudge constant flat results despite 10x more episodes
-
+# Discrete action version very hard to solve randomly or to nudge constant flat results despite 10x more attempts
 
 Run 200 episodes of smoothed discrete sampler for MountainCar-v0...done in 1.083 seconds
 Episode reward mean:-192.10, maximum: -92.00, minimum:-200.00   
